@@ -21,7 +21,11 @@
         <td><%= lighting_product.name %></td>
         <td><%= lighting_product.product_description %></td>
         <td><%= lighting_product.battery_capacity %></td>
-        <td><%= image_tag "imgsolarpanels/aeg-gf12.png" %></td>
+        <% if !lighting_product.image_url.nil? %>
+        <td><%= image_tag "imgsolarpanels/#{lighting_product.image_url}" %></td>
+        <% else %>
+        <td>"No image found"</td>
+        <% end %>
         <td><%= link_to 'Show', lighting_product %></td>
         <td><%= link_to 'Edit', edit_lighting_product_path(lighting_product) %></td>
         <td><%= link_to 'Destroy', lighting_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,3 +37,7 @@
 <br>
 
 <%= link_to 'New Lighting Product', new_lighting_product_path %>
+
+
+
+
