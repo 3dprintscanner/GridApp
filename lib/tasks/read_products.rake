@@ -19,10 +19,35 @@ end
 
 namespace :products do
 
-
 	#def self.get_countries(country_list)
 	#	return Country.where(:name => 'Tanzania')
 	#end
+
+	desc "Link Images"
+
+	task :link => :environment do
+
+		@files = Dir["app/assets/images/imgsolarpanels/*"]
+
+		# take each file and find the corresponding image name, match it to a product, alter the field and save
+		@files.each do |file|
+
+			
+			image_name = file.split('/').last
+
+			puts image_name
+
+			product_name = image_name.split('.').first
+
+			product = LightingProduct.where(:product_identifier => product_name).first
+			next  if product.nil?
+			puts product	
+			product.update_image_url(image_name)
+
+		end 
+
+
+	end 
 
 
 	desc "Load Products"

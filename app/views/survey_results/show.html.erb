@@ -8,10 +8,10 @@
       <th>Name</th>
       <th>Description</th>
       <th>Battery Capacity</th>
+      <th>Picture</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @survey_results.lighting_products.each do |lighting_product| %>
       <tr>
@@ -19,6 +19,11 @@
         <td><%= lighting_product.name %></td>
         <td><%= lighting_product.product_description %></td>
         <td><%= lighting_product.battery_capacity %></td>
+        <% if !lighting_product.image_url.nil? %>
+        <td><%= image_tag "imgsolarpanels/#{lighting_product.image_url}" %></td>
+        <% else %>
+        <td>"No image found"</td>
+        <% end %>
         <td><%= link_to 'Show', lighting_product %></td>
         <td><%= link_to 'Edit', edit_lighting_product_path(lighting_product) %></td>
         <td><%= link_to 'Destroy', lighting_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

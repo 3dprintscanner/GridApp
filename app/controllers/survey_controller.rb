@@ -12,8 +12,8 @@ class SurveyController < ApplicationController
 		
 
 		if(!@survey_products.nil?)
-			code = SecureRandom.urlsafe_base64(5)
-			result = SurveyResult.create(respondent: respondent, lighting_products: @survey_products, commmunity_code: code)
+			code = SecureRandom.urlsafe_base64(5).to_s
+			result = SurveyResult.create(respondent: respondent, lighting_products: @survey_products, community_code: code)
 			# render :json => {:result_id => result.id} if !@survey_products.nil?
 			render plain:  "#{result.id} - your community code is: #{code}" if !@survey_products.nil?
 		else
