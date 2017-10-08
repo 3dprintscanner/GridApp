@@ -15,7 +15,7 @@ class SurveyController < ApplicationController
 			code = SecureRandom.urlsafe_base64(5).to_s
 			result = SurveyResult.create(respondent: respondent, lighting_products: @survey_products, community_code: code)
 			# render :json => {:result_id => result.id} if !@survey_products.nil?
-			render plain:  "#{result.id} - your community code is: #{code}" if !@survey_products.nil?
+			render plain:  "#{result.id} - your community code is: #{result.community_code}" if !@survey_products.nil?
 		else
 			render :status => 400, :json => {:error => "Bad Request"}
 		end
