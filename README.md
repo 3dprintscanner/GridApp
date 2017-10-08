@@ -16,6 +16,9 @@ Things you may want to cover:
 	`bundle install`
 	`rake db:migrate`
 	`rake db:seed`
+	`rake products:load`
+	`rake products:link`
+	`rails g bootstrap:install --static`
 	`rails s`
 
 
