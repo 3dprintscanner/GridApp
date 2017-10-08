@@ -2,29 +2,32 @@
 
 
 
-
-
-<div class="container-fluid">
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="row">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
 		
 	</div>
-	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-		<div class="row">
-			<h2><%= @lighting_product.name %><h2>		
-		</div>
-		<div class="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<div class="row">
-					<%= image_tag "imgsolarpanels/#{@lighting_product.image_url}" if !@lighting_product.image_url.nil? %>	
-				</div>
-				<div class="row">
-					<p><%= @lighting_product.product_description %></p>
-				</div>
-			</div>
-		</div>
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 product-description">
+		<div class="container-fluid">
+		  	<div class="row">
+		  		<h3 class="green-text"> <%= @lighting_product.name %> </h3>
+		  	</div>
+		  	<div class="row">
+		  		<%= link_to image_tag("imgsolarpanels/#{@lighting_product.image_url}"), lighting_product_path  %>
+		  	</div>
+		    <div class="container-fluid">
+		      
+		      <ul class="lighting-product-elements">
+		        <li>Manufacturer:<%= @lighting_product.manufacturer.name %></li>
+		        <li>Price: <%= @lighting_product.price %></li>
+		        <li>Product ID: <%= @lighting_product.product_identifier %></li>
+		        <li>Product Description:<%= @lighting_product.product_description %> </li> 
+		      </ul>
+		    </div>
+		    <%= link_to 'Back', lighting_products_path %>
+		</div>		
 	</div>
-
 </div>
 
-<%= link_to 'Edit', edit_lighting_product_path(@lighting_product) %> |
-<%= link_to 'Back', lighting_products_path %>
+
+
+
