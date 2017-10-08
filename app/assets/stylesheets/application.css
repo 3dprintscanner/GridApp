@@ -122,6 +122,12 @@ html {
 }
 
 
+.index-header{
+	text-align: center;
+	margin-left: 25%;
+}
+
+
 .img-circle{
 	height: 220px;
 	width: 220px;
