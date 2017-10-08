@@ -1,38 +1,45 @@
-<h1>SurveyResults#show</h1>
-<p>Find me in app/views/survey_results/show.html.erb</p>
+<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+  
+</div>
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+  <div class="table table-responsive">
+    <table class=table table-hover">
+      <tbody>
+        <% @survey_results.lighting_products.each do |lighting_product| %>
+          
+          <% next if lighting_product.image_url.nil? %>
+          <tr>
 
-
-
-
-<div class="table table-responsive">
-  <table class=table table-hover">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Battery Capacity</th>
-        <th>Picture</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @survey_results.lighting_products.each do |lighting_product| %>
-        <tr>
-          <td><%= lighting_product.id %></td>
-          <td><%= lighting_product.name %></td>
-          <td><%= lighting_product.product_description %></td>
-          <td><%= lighting_product.battery_capacity %></td>
-          <% if !lighting_product.image_url.nil? %>
-          <td><%= image_tag "imgsolarpanels/#{lighting_product.image_url}" %></td>
-          <% else %>
-          <td>"No image found"</td>
-          <% end %>
-          <td><%= link_to 'Show', lighting_product %></td>
-          <td><%= link_to 'Edit', edit_lighting_product_path(lighting_product) %></td>
-          <td><%= link_to 'Destroy', lighting_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>  
+            <div class="row lighting-row">
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 orange-bg lp-row-element">
+                
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 lp-row-element">
+                <%= link_to image_tag("imgsolarpanels/#{lighting_product.image_url}"), lighting_product  %>
+              </div>
+              <div class="col-xs-7 col-sm-8 col-md-8 col-lg-8 product-bg lp-row-element">
+                  <div class="container-fluid">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div class="container-fluid">
+                        <h3 class="green-text"> <%= lighting_product.name %> </h3>
+                        <ul class="lighting-product-elements">
+                          <li>Manufacturer:<%= lighting_product.manufacturer.name %></li>
+                          <li>Price: <%= lighting_product.price %></li>
+                          <li>Product ID: <%= lighting_product.product_identifier %></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div class="container-fluid desc-div">
+                        <p class ="lighting-product-elements"> <%= lighting_product.product_description %> </p>  
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>  
 </div>

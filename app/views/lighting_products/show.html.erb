@@ -1,14 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @lighting_product.name %>
-</p>
 
-<p>
-  <strong>Num of 12v sockets:</strong>
-  <%= @lighting_product.num_12v %>
-</p>
+
+
+
+<div class="container-fluid">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		
+	</div>
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<div class="row">
+			<h2><%= @lighting_product.name %><h2>		
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="row">
+					<%= image_tag "imgsolarpanels/#{@lighting_product.image_url}" if !@lighting_product.image_url.nil? %>	
+				</div>
+				<div class="row">
+					<p><%= @lighting_product.product_description %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
 
 <%= link_to 'Edit', edit_lighting_product_path(@lighting_product) %> |
 <%= link_to 'Back', lighting_products_path %>
