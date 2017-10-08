@@ -1,3 +1,4 @@
+require 'securerandom'
 
 class SurveyController < ApplicationController
 	skip_before_action :verify_authenticity_token
@@ -11,9 +12,10 @@ class SurveyController < ApplicationController
 		
 
 		if(!@survey_products.nil?)
-			result = SurveyResult.create(respondent: respondent, lighting_products: @survey_products)
+			code = SecureRandom.urlsafe_base64(5)
+			result = SurveyResult.create(respondent: respondent, lighting_products: @survey_products, commmunity_code: code)
 			# render :json => {:result_id => result.id} if !@survey_products.nil?
-			render plain:  "#{result.id}" if !@survey_products.nil?
+			render plain:  "#{result.id} - your community code is: #{code}" if !@survey_products.nil?
 		else
 			render :status => 400, :json => {:error => "Bad Request"}
 		end
